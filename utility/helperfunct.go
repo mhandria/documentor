@@ -1,3 +1,4 @@
+//Package provides function that helps with documentor
 package utility
 
 import (
@@ -27,6 +28,12 @@ func ReadResponse(response *http.Response) string {
 	return dataString
 }
 
+// DecodeReadResponse takes a json string and a value within that json string
+// that the user wants to decode.
+// NOTE: this will only decode a base64 encryption
+// @param dataString - json string
+// @param value - content string that needs to be decoded
+// @return decoded string
 func DecodeReadResponse(dataString, value string) string {
 	var jsonParser map[string]interface{}
 
@@ -36,7 +43,7 @@ func DecodeReadResponse(dataString, value string) string {
 
 	if err != nil {
 		log.Fatal(err)
-		os.Exit(1)
+		os.Exit(1) //TODO: remove later change to goroutine
 	}
 
 	fContent, _ := jsonParser[value].(string)
@@ -44,4 +51,32 @@ func DecodeReadResponse(dataString, value string) string {
 	stringDecoded, _ := b64.StdEncoding.DecodeString(fContent)
 
 	return ("\n" + string(stringDecoded))
+}
+
+func StringToJsonArray(dataString string) [](map[string]interface{}) {
+	var jsonParsed []map[string]interface{}
+	bStream := []byte(dataString)
+	err := json.Unmarshal(bStream, &jsonParsed)
+	if err != nil {
+		log.Fatal(err)
+		os.Exit(1) //TODO: remove later change to goroutine
+	}
+
+	return jsonParsed
+}
+
+func TryRequest(req *http.Request, err error) *http.Request {
+	if err != nil {
+		log.Fatal(err)
+		os.Exit(1) //TODO: remove later change to goroutine
+	}
+	return req
+}
+
+func TryResponse(res *http.Response, err error) *http.Response {
+	if err != nil {
+		log.Fatal(err)
+		os.Exit(1) //TODO: remove later change to goroutine
+	}
+	return res
 }
