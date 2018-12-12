@@ -1,12 +1,14 @@
 package service
 
 import (
-	"documentor/secret"
-	"documentor/utility"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
+
+	"ghosthub.com/mhandria/documentor/secret"
+
+	"ghosthub.com/mhandria/documentor/utility"
 )
 
 const ghosthubKey = secret.GhosthubKey

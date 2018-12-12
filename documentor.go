@@ -1,7 +1,7 @@
 package main
 
 import (
-	gitscraper "documentor/service"
+	gitscraper "ghosthub.com/mhandria/documentor/service"
 )
 
 func main() {
