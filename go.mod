@@ -1,1 +1,1 @@
-module documentor
+module ghosthub.com/mhandria/documentor
