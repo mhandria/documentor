@@ -5,13 +5,16 @@ import (
 	"log"
 )
 
-func LogIfError(err error, extraInfo ...interface{}) bool {
-	if err != nil {
+// LogIfError logs the error into a json format and prints it back
+// as with log.Fatal.  This function will return true if error != nil
+// and return false if error is nil
+func LogIfError(err error, extraInfo ...interface{}) (isError bool) {
+	isError = (err != nil)
+	if isError {
 		event, _ := json.Marshal(logEvent{Message: err.Error(), Extra: extraInfo})
 		log.Fatal(string(event))
-		return true
 	}
-	return false
+	return
 }
 
 type logEvent struct {
