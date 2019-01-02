@@ -1,1 +1,1 @@
-module ghosthub.com/mhandria/documentor
+module github.com/mhandria/documentor
