@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                docker build -t documentor-image .
+                sh "docker build -t documentor-image ."
             }
         }
     }
