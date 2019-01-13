@@ -1,7 +1,11 @@
-FROM golang:1.12  AS builder
-WORKDIR /src
+FROM golang:stretch  AS builder
+WORKDIR /src/
 
 COPY . .
+
+RUN echo $PWD
+
+RUN ls
 
 RUN go build ./documentor.go
 

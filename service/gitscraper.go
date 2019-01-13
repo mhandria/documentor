@@ -6,18 +6,17 @@ import (
 	"net/http"
 	"os"
 
-	"ghosthub.com/mhandria/documentor/secret"
-
-	"ghosthub.com/mhandria/documentor/utility"
+	// "github.com/mhandria/documentor/secret"
+	"github.com/mhandria/documentor/utility"
 )
 
-const ghosthubKey = secret.GhosthubKey
-const ghosthubApiUrl = secret.GhosthubApiUrl
+const ghosthubKey, ghosthubAPIURL = "blank", "blank"
 
 var client = &http.Client{}
 
+//GetOrganizationMembers -> get organization members from github given a org name
 func GetOrganizationMembers(orgName string) {
-	endpoint := ghosthubApiUrl + "/orgs/" + orgName + "/members"
+	endpoint := ghosthubAPIURL + "/orgs/" + orgName + "/members"
 	req := utility.TryRequest(http.NewRequest("GET", endpoint, nil))
 
 	req.Header.Set("Authorization", "token "+ghosthubKey)
@@ -34,6 +33,7 @@ func GetOrganizationMembers(orgName string) {
 	}
 }
 
+//GetGithubFileContent -> Get file content from github given a filename
 func GetGithubFileContent(fileName string) string {
 	response, err := http.Get(fileName)
 
