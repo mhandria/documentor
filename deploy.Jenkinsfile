@@ -1,10 +1,10 @@
 pipeline {
-    agent any 
+    agent {label 'docker'} 
 
     stages {
         stage('Build') {
             steps {
-                echo 'Building... '
+                sh "docker build -t documentor:latest ."
             }
         }
         stage('Deploy') {

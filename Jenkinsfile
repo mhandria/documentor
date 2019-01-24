@@ -1,10 +1,10 @@
 pipeline {
-    agent any 
+    agent {label 'docker'}
 
     stages {
         stage('Build') {
             steps {
-                sh "docker build -t documentor-image ."
+                sh "docker build -t documentor:latest ."
             }
         }
     }
