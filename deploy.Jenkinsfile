@@ -8,7 +8,9 @@ pipeline {
             }
         }
         stage('Get Tag') {
-            sh "git describe --abbrev=0 --tags"
+            steps {
+                sh "git describe --abbrev=0 --tags"
+            }
         }
         stage('Build') {
             steps {
