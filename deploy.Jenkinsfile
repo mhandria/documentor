@@ -10,6 +10,7 @@ pipeline {
         }
         stage('Build') {
             steps {
+                echo "building"
                 sh "docker build -t documentor:latest ."
             }
         }
