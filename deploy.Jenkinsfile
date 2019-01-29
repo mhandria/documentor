@@ -30,5 +30,8 @@ pipeline {
         always {
             deleteDir()
         }
+        failure {
+            sh "docker system prune -f"
+        }
     }
 }
