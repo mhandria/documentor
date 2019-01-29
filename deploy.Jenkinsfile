@@ -2,11 +2,6 @@ pipeline {
     agent {label 'docker'}
 
     stages {
-        stage('Server Initial Clean Up') {
-            steps {
-                sh "docker system prune -f"
-            }
-        }
         stage('Get Tag') {
             steps {
                 sh "git describe --abbrev=0 --tags"
