@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Get Tag') {
             steps {
-                echo "ecifying the tags here"
+                echo "Specifying the tags here"
                 sh "git describe --abbrev=0 --tags"
             }
         }
