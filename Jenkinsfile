@@ -16,7 +16,7 @@ pipeline {
     }
 
     post {
-        unsuccessful{
+        failure {
             sh "docker rmi documentor:latest"
         }
     }
