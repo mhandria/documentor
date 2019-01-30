@@ -10,7 +10,7 @@ pipeline {
         stage('Deploy To Artifactory') {
             steps {
                 sh "printenv"
-                sh "deploying somewhere ...."
+                echo "deploying somewhere ...."
             }
         }
     }
