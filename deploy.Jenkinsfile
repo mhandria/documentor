@@ -7,7 +7,14 @@ pipeline {
     stages {
         stage('Get Tag') {
             steps {
-                echo "$params"
+                checkout([$class: 'GitSCM',
+                          branches: [[name: "${params.TAG}"]],
+                          doGenerateSubmoduleConfigurations: false,
+                          extensions: [],
+                          gitTool: 'Default',
+                          submoduleCfg: [],
+                          userRemoteConfigs: [[url: 'https://github.com/jenkinsci/git-parameter-plugin.git']]
+                        ])
                 sh "git describe --abbrev=0 --tags"
             }
         }
