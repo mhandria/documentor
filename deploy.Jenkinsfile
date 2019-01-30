@@ -1,6 +1,9 @@
 pipeline {
     agent {label 'docker'}
 
+    parameters {
+        gitParameter name: 'TAG', type: 'PT_TAG', defaultValue: 'master'
+    }
     stages {
         stage('Get Tag') {
             steps {
@@ -15,6 +18,9 @@ pipeline {
             }
         }
         stage('Deploy') {
+            when {
+                expression { params.TAG != 'master' }
+            }
             steps {
                 echo 'Deploying... '
             }
