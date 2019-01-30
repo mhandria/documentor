@@ -7,7 +7,7 @@ pipeline {
                 sh "docker build -t documentor:latest ."
             }
         }
-        stage('Deploy') {
+        stage('Deploy To Artifactory') {
             steps {
                 sh "printenv"
                 sh "deploying somewhere ...."
