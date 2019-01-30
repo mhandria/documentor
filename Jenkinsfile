@@ -21,11 +21,19 @@ pipeline {
     }
 
     post {
+<<<<<<< HEAD
         always {
             deleteDir()
         }
+=======
+        
+        always {
+            deleteDir()
+        }
+
+>>>>>>> [chore] set a gateway for deployment
         failure {
-            sh "docker rmi documentor:latest"
+            sh "docker rmi documentor:build"
         }
     }
 }
