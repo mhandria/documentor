@@ -21,13 +21,11 @@ pipeline {
     }
 
     post {
-        
         always {
             deleteDir()
         }
-
         failure {
-            sh "docker rmi documentor:build"
+            sh "docker rmi documentor:latest"
         }
     }
 }
