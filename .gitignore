@@ -1,0 +1,7 @@
+# Ignore file executor
+*.exe
+*.sh
+documentor
+
+
+secret/
